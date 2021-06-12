@@ -29,7 +29,8 @@ class ProductListener
      */
     public function postPersist(Product $product): void
     {
-        $this->bus->dispatch(new SendEmailMessage([$this->receiveEmailAddress],
+        $this->bus->dispatch(new SendEmailMessage(
+            [$this->receiveEmailAddress],
             "Product added",
             "Product Title: {$product->getTitle()}"
         ));
@@ -40,7 +41,8 @@ class ProductListener
      */
     public function postUpdate(Product $product): void
     {
-        $this->bus->dispatch(new SendEmailMessage([$this->receiveEmailAddress],
+        $this->bus->dispatch(new SendEmailMessage(
+            [$this->receiveEmailAddress],
             "Product updated",
             "Product Title: {$product->getTitle()}"
         ));

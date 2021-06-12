@@ -27,11 +27,20 @@ bin/console doctrine:migrations:migrate --no-interaction
 bin/console app:import
 ```
 
-## Noted:
+### 6. Listen event add/update product to send email
+
+---
+**_NOTE:_**
 The function sends email while listening event adds or updates a product was process by an async messenger.
 That means even you setting up the wrong email server in env. The main features still work properly.
+---
 
 Messenger log: 
 ```html
 var/log/email_consumer.out.log
 ```
+
+## Requirement risk:
+Should be clear before implementation: 
+1. categoriesEId in file products.json referent to category id or eid? It will make sense if it is eid, but in that case, eid should be not null.
+2. Which key accepted for categories? categoriesEId or categoryEId? 

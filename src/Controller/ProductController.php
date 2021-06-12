@@ -61,7 +61,8 @@ class ProductController extends AbstractJsonResponse
         $product = $this->productService->getOne((int)$productId);
         if (!$product) {
             return $this->json(
-                "Product not found", Response::HTTP_OK
+                "Product not found",
+                Response::HTTP_OK
             );
         }
 
@@ -103,7 +104,8 @@ class ProductController extends AbstractJsonResponse
         }
 
         return $this->json(
-            "success", Response::HTTP_CREATED
+            "success",
+            Response::HTTP_CREATED
         );
     }
 
@@ -117,10 +119,11 @@ class ProductController extends AbstractJsonResponse
     public function update(string $productId, Request $request): Response
     {
         /** @var Product|null $product */
-        $product = $this->productService->getOne($productId);
+        $product = $this->productService->getOne((int)$productId);
         if (!$product) {
             return $this->json(
-                "Product not found!", Response::HTTP_BAD_REQUEST
+                "Product not found!",
+                Response::HTTP_BAD_REQUEST
             );
         }
         $payload = json_decode($request->getContent(), true);
@@ -147,7 +150,8 @@ class ProductController extends AbstractJsonResponse
         }
 
         return $this->json(
-            "success", Response::HTTP_CREATED
+            "success",
+            Response::HTTP_OK
         );
     }
 
@@ -159,8 +163,8 @@ class ProductController extends AbstractJsonResponse
      */
     public function delete(string $productId): Response
     {
-        /** @var Product $product */
-        $product = $this->productService->getOne($productId);
+        /** @var Product|null $product */
+        $product = $this->productService->getOne((int)$productId);
         if ($product) {
             try {
                 $this->productService->delete($product);

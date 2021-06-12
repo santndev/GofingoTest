@@ -74,7 +74,8 @@ class CategoryController extends AbstractJsonResponse
         }
 
         return $this->json(
-            "success", Response::HTTP_CREATED
+            "success",
+            Response::HTTP_CREATED
         );
     }
 }

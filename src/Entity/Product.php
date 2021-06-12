@@ -32,6 +32,7 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=12)
+     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 3,
      *      max = 12,
@@ -43,6 +44,7 @@ class Product
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank()
      * @Assert\Range(
      *      min = 0,
      *      max = 200,

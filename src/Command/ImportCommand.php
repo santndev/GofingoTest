@@ -92,12 +92,12 @@ class ImportCommand extends Command
 
 
         $categoryImportStatus = $this->importCategories($categorySourcePath);
-        $io->success(json_encode($categoryImportStatus, true));
+        $io->success(json_encode($categoryImportStatus));
 
         $productImportStatus = $this->importProducts($productSourcePath);
-        $io->success(json_encode($productImportStatus, true));
+        $io->success(json_encode($productImportStatus));
 
-
+        $io->note('Import finish');
         return Command::SUCCESS;
     }
 
@@ -113,6 +113,7 @@ class ImportCommand extends Command
         $success  = 0;
         $error    = 0;
         $errorMsg = [];
+
         do {
             $total += 1;
 

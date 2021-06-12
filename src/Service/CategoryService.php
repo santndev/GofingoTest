@@ -31,7 +31,7 @@ class CategoryService
     }
 
     /**
-     * @param int $productId
+     * @param int $categoryId
      *
      * @return Category|null
      */

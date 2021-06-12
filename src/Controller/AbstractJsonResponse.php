@@ -20,7 +20,7 @@ abstract class AbstractJsonResponse extends AbstractController
     {
         try {
             $json = json_decode($data, true);
-            if($json){
+            if ($json) {
                 $data = $json;
             }
         } catch (\Exception $e) {

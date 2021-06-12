@@ -5,7 +5,7 @@ RUN a2enmod rewrite
 RUN apt-get update \
   && apt-get install -y cron libzip-dev git wget --no-install-recommends libicu-dev \
   && apt-get clean \
-  && docker-php-ext-install -j$(nproc) \
+  && docker-php-ext-install -j$(nproc) zip \
          intl \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

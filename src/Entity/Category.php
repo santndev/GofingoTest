@@ -22,6 +22,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=12)
+     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 3,
      *      max = 12,

@@ -1,0 +1,9 @@
+parameters:
+	excludes_analyse:
+
+	inferPrivatePropertyTypeFromConstructor: true
+	checkMissingIterableValueType: false
+	checkGenericClassInNonGenericObjectType: false
+	ignoreErrors:
+		- '#has no typehint specified#'
+		- '#has no return typehint specified#'
