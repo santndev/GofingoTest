@@ -26,6 +26,7 @@ services:
 
   product_listener:
     class: App\EventListener\ProductListener
-    arguments: ~
+    arguments:
+      $receiveEmailAddress: '%env(string:RECEIVE_EMAIL_ADDRESS)%'
     tags:
       - { name: doctrine.orm.entity_listener }

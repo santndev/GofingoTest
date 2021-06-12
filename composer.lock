@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84482ef62e3c2ef8a6b73581d730de31",
+    "content-hash": "e731cc58a54e19973be385983b2e79fb",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1783,6 +1783,102 @@
             "time": "2021-02-25T21:54:58+00:00"
         },
         {
+            "name": "monolog/monolog",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
+                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "psr/log": "^1.0.1"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+                "doctrine/couchdb": "~1.0@dev",
+                "elasticsearch/elasticsearch": "^7",
+                "graylog2/gelf-php": "^1.4.2",
+                "mongodb/mongodb": "^1.8",
+                "php-amqplib/php-amqplib": "~2.4",
+                "php-console/php-console": "^3.1.3",
+                "phpspec/prophecy": "^1.6.1",
+                "phpstan/phpstan": "^0.12.59",
+                "phpunit/phpunit": "^8.5",
+                "predis/predis": "^1.1",
+                "rollbar/rollbar": "^1.3",
+                "ruflin/elastica": ">=0.90 <7.0.1",
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mbstring": "Allow to work properly with unicode symbols",
+                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "php-console/php-console": "Allow sending log messages to Google Chrome",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "https://seld.be"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "https://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-12-14T13:15:25+00:00"
+        },
+        {
             "name": "pcrov/jsonreader",
             "version": "1.0.1",
             "source": {
@@ -2277,6 +2373,75 @@
                 "psr-3"
             ],
             "time": "2021-05-03T11:20:27+00:00"
+        },
+        {
+            "name": "symfony/amqp-messenger",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/amqp-messenger.git",
+                "reference": "d8a2b1f23b0fdaa848fbd1d87910fbcb7c308d21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/amqp-messenger/zipball/d8a2b1f23b0fdaa848fbd1d87910fbcb7c308d21",
+                "reference": "d8a2b1f23b0fdaa848fbd1d87910fbcb7c308d21",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/messenger": "^5.3"
+            },
+            "require-dev": {
+                "symfony/event-dispatcher": "^4.4|^5.0",
+                "symfony/process": "^4.4|^5.0",
+                "symfony/property-access": "^4.4|^5.0",
+                "symfony/serializer": "^4.4|^5.0"
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Messenger\\Bridge\\Amqp\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony AMQP extension Messenger Bridge",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/amqp-messenger/tree/v5.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-26T17:43:10+00:00"
         },
         {
             "name": "symfony/cache",
@@ -2879,6 +3044,79 @@
                 }
             ],
             "time": "2021-06-01T15:43:02+00:00"
+        },
+        {
+            "name": "symfony/doctrine-messenger",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/doctrine-messenger.git",
+                "reference": "bb7e21cce826e627ba1683b628d09b70a3b6d5ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/doctrine-messenger/zipball/bb7e21cce826e627ba1683b628d09b70a3b6d5ba",
+                "reference": "bb7e21cce826e627ba1683b628d09b70a3b6d5ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/messenger": "^5.1",
+                "symfony/service-contracts": "^1.1|^2"
+            },
+            "conflict": {
+                "doctrine/dbal": "<2.10",
+                "doctrine/persistence": "<1.3"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.10|^3.0",
+                "doctrine/persistence": "^1.3|^2",
+                "symfony/property-access": "^4.4|^5.0",
+                "symfony/serializer": "^4.4|^5.0"
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Messenger\\Bridge\\Doctrine\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Doctrine Messenger Bridge",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/doctrine-messenger/tree/v5.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-26T17:33:56+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -3964,6 +4202,95 @@
             "time": "2021-05-27T12:56:16+00:00"
         },
         {
+            "name": "symfony/messenger",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/messenger.git",
+                "reference": "0e4a718c4285bbdaec0f4724e281fb49d9d05963"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/messenger/zipball/0e4a718c4285bbdaec0f4724e281fb49d9d05963",
+                "reference": "0e4a718c4285bbdaec0f4724e281fb49d9d05963",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "psr/log": "~1.0",
+                "symfony/amqp-messenger": "^5.1",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/doctrine-messenger": "^5.1",
+                "symfony/polyfill-php80": "^1.15",
+                "symfony/redis-messenger": "^5.1"
+            },
+            "conflict": {
+                "symfony/event-dispatcher": "<4.4",
+                "symfony/framework-bundle": "<4.4",
+                "symfony/http-kernel": "<4.4"
+            },
+            "require-dev": {
+                "psr/cache": "^1.0|^2.0|^3.0",
+                "symfony/console": "^4.4|^5.0",
+                "symfony/dependency-injection": "^4.4|^5.0",
+                "symfony/event-dispatcher": "^4.4|^5.0",
+                "symfony/http-kernel": "^4.4|^5.0",
+                "symfony/process": "^4.4|^5.0",
+                "symfony/property-access": "^4.4|^5.0",
+                "symfony/routing": "^4.4|^5.0",
+                "symfony/serializer": "^4.4|^5.0",
+                "symfony/service-contracts": "^1.1|^2",
+                "symfony/stopwatch": "^4.4|^5.0",
+                "symfony/validator": "^4.4|^5.0"
+            },
+            "suggest": {
+                "enqueue/messenger-adapter": "For using the php-enqueue library as a transport."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Messenger\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samuel Roze",
+                    "email": "samuel.roze@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps applications send and receive messages to/from other applications or via message queues",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/messenger/tree/v5.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-26T17:43:10+00:00"
+        },
+        {
             "name": "symfony/mime",
             "version": "v5.3.0",
             "source": {
@@ -4045,6 +4372,170 @@
                 }
             ],
             "time": "2021-05-26T17:43:10+00:00"
+        },
+        {
+            "name": "symfony/monolog-bridge",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/monolog-bridge.git",
+                "reference": "84841557874df015ef2843aa16ac63d09f97c7b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/monolog-bridge/zipball/84841557874df015ef2843aa16ac63d09f97c7b9",
+                "reference": "84841557874df015ef2843aa16ac63d09f97c7b9",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "^1.25.1|^2",
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/http-kernel": "^5.3",
+                "symfony/service-contracts": "^1.1|^2"
+            },
+            "conflict": {
+                "symfony/console": "<4.4",
+                "symfony/http-foundation": "<5.3"
+            },
+            "require-dev": {
+                "symfony/console": "^4.4|^5.0",
+                "symfony/http-client": "^4.4|^5.0",
+                "symfony/mailer": "^4.4|^5.0",
+                "symfony/messenger": "^4.4|^5.0",
+                "symfony/mime": "^4.4|^5.0",
+                "symfony/security-core": "^4.4|^5.0",
+                "symfony/var-dumper": "^4.4|^5.0"
+            },
+            "suggest": {
+                "symfony/console": "For the possibility to show log messages in console commands depending on verbosity settings.",
+                "symfony/http-kernel": "For using the debugging handlers together with the response life cycle of the HTTP kernel.",
+                "symfony/var-dumper": "For using the debugging handlers like the console handler or the log server handler."
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bridge\\Monolog\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides integration for Monolog with various Symfony components",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/monolog-bridge/tree/v5.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-26T17:43:10+00:00"
+        },
+        {
+            "name": "symfony/monolog-bundle",
+            "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/monolog-bundle.git",
+                "reference": "4054b2e940a25195ae15f0a49ab0c51718922eb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/4054b2e940a25195ae15f0a49ab0c51718922eb4",
+                "reference": "4054b2e940a25195ae15f0a49ab0c51718922eb4",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "~1.22 || ~2.0",
+                "php": ">=7.1.3",
+                "symfony/config": "~4.4 || ^5.0",
+                "symfony/dependency-injection": "^4.4 || ^5.0",
+                "symfony/http-kernel": "~4.4 || ^5.0",
+                "symfony/monolog-bridge": "~4.4 || ^5.0"
+            },
+            "require-dev": {
+                "symfony/console": "~4.4 || ^5.0",
+                "symfony/phpunit-bridge": "^5.1",
+                "symfony/yaml": "~4.4 || ^5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\MonologBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony MonologBundle",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "log",
+                "logging"
+            ],
+            "support": {
+                "issues": "https://github.com/symfony/monolog-bundle/issues",
+                "source": "https://github.com/symfony/monolog-bundle/tree/v3.7.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-03-31T07:20:47+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -4927,6 +5418,73 @@
                 }
             ],
             "time": "2021-05-31T12:40:48+00:00"
+        },
+        {
+            "name": "symfony/redis-messenger",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/redis-messenger.git",
+                "reference": "b2f1e3383a0da3f8ca94638d5653d8b48b448c18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/redis-messenger/zipball/b2f1e3383a0da3f8ca94638d5653d8b48b448c18",
+                "reference": "b2f1e3383a0da3f8ca94638d5653d8b48b448c18",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/messenger": "^5.1"
+            },
+            "require-dev": {
+                "symfony/property-access": "^4.4|^5.0",
+                "symfony/serializer": "^4.4|^5.0"
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Messenger\\Bridge\\Redis\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Redis extension Messenger Bridge",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/redis-messenger/tree/v5.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-26T17:43:10+00:00"
         },
         {
             "name": "symfony/routing",

@@ -62,7 +62,9 @@ class CategoryController extends AbstractJsonResponse
                     $this->categoryService->createOne($category);
                 } catch (\Exception $exception) {
                     return $this->json(
-                        $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR
+                    // TODO: shouldn't display exception here.
+                        $exception->getMessage(),
+                        Response::HTTP_INTERNAL_SERVER_ERROR
                     );
                 }
             } else {

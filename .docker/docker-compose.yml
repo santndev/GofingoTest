@@ -31,3 +31,15 @@ services:
       - "8080:80"
     expose:
       - 8080
+
+  gofingo-test-messenger:
+    container_name: gofingo-test-messenger
+    depends_on:
+      - gofingo-test-db
+      - gofingo-test-apache
+    restart: on-failure
+    working_dir: /app
+    build: ./messenger/
+    volumes:
+      - ../:/var/www
+      - ./messenger/supervisord.conf:/etc/supervisord.conf

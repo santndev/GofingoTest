@@ -26,3 +26,12 @@ bin/console doctrine:migrations:migrate --no-interaction
 ```html
 bin/console app:import
 ```
+
+## Noted:
+The function sends email while listening event adds or updates a product was process by an async messenger.
+That means even you setting up the wrong email server in env. The main features still work properly.
+
+Messenger log: 
+```html
+var/log/email_consumer.out.log
+```

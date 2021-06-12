@@ -3,15 +3,25 @@
 namespace App\EventListener;
 
 use App\Entity\Product;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Message\SendEmailMessage;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 class ProductListener
 {
-    private $entityManager;
+    /**
+     * @var string
+     */
+    private string $receiveEmailAddress;
+    /**
+     * @var MessageBusInterface
+     */
+    private MessageBusInterface $bus;
 
-    public function __construct(EntityManagerInterface $entityManager)
+
+    public function __construct(MessageBusInterface $bus, string $receiveEmailAddress)
     {
-        $this->entityManager = $entityManager;
+        $this->bus                 = $bus;
+        $this->receiveEmailAddress = $receiveEmailAddress;
     }
 
     /**
@@ -19,7 +29,10 @@ class ProductListener
      */
     public function postPersist(Product $product): void
     {
-        dd($product);
+        $this->bus->dispatch(new SendEmailMessage([$this->receiveEmailAddress],
+            "Product added",
+            "Product Title: {$product->getTitle()}"
+        ));
     }
 
     /**
@@ -27,6 +40,9 @@ class ProductListener
      */
     public function postUpdate(Product $product): void
     {
-        dd($product);
+        $this->bus->dispatch(new SendEmailMessage([$this->receiveEmailAddress],
+            "Product updated",
+            "Product Title: {$product->getTitle()}"
+        ));
     }
 }

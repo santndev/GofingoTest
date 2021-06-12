@@ -34,17 +34,17 @@ class CategoryType extends AbstractType
             function ($entity) {
                 return $entity;
             },
-            function (?int $eid) use ($options) {
-                if (!$eid) {
+            function (?int $id) use ($options) {
+                if (!$id) {
                     return null;
                 }
 
-                $entity = $this->categoryRepository->findOneBy(['eid' => $eid]);
+                $entity = $this->categoryRepository->find($id);
                 if ($entity) {
-                    return Category::class === $options['class'] ? $entity : $entity->getEid();
+                    return Category::class === $options['class'] ? $entity : $entity->getId();
                 }
 
-                throw new TransformationFailedException("Cannot find category with eid $eid.");
+                throw new TransformationFailedException("Cannot find category with id $id.");
             }
         ));
     }

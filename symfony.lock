@@ -97,6 +97,9 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.2.0"
     },
+    "monolog/monolog": {
+        "version": "2.2.0"
+    },
     "myclabs/deep-copy": {
         "version": "1.10.2"
     },
@@ -222,6 +225,9 @@
     "sebastian/version": {
         "version": "3.0.2"
     },
+    "symfony/amqp-messenger": {
+        "version": "v5.3.0"
+    },
     "symfony/browser-kit": {
         "version": "v5.3.0"
     },
@@ -257,6 +263,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v5.3.1"
+    },
+    "symfony/doctrine-messenger": {
+        "version": "v5.3.0"
     },
     "symfony/dom-crawler": {
         "version": "v5.3.0"
@@ -343,8 +352,38 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "e9a414b113ceadbf4e52abe37bf8f1b443f06ccb"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
+    },
     "symfony/mime": {
         "version": "v5.3.0"
+    },
+    "symfony/monolog-bridge": {
+        "version": "v5.3.0"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.7",
+            "ref": "329f6a5ef2e7aa033f802be833ef8d1268dd0848"
+        },
+        "files": [
+            "config/packages/dev/monolog.yaml",
+            "config/packages/prod/deprecations.yaml",
+            "config/packages/prod/monolog.yaml",
+            "config/packages/test/monolog.yaml"
+        ]
     },
     "symfony/options-resolver": {
         "version": "v5.3.0"
@@ -393,6 +432,9 @@
     },
     "symfony/property-info": {
         "version": "v5.3.1"
+    },
+    "symfony/redis-messenger": {
+        "version": "v5.3.0"
     },
     "symfony/routing": {
         "version": "5.3",

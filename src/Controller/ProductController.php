@@ -91,7 +91,9 @@ class ProductController extends AbstractJsonResponse
                     $this->productService->createOne($product);
                 } catch (\Exception $exception) {
                     return $this->json(
-                        $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR
+                    // TODO: shouldn't display exception here.
+                        $exception->getMessage(),
+                        Response::HTTP_INTERNAL_SERVER_ERROR
                     );
                 }
             } else {
@@ -133,7 +135,9 @@ class ProductController extends AbstractJsonResponse
                     $this->productService->updateOne($product);
                 } catch (\Exception $exception) {
                     return $this->json(
-                        $exception->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR
+                    // TODO: shouldn't display exception here.
+                        $exception->getMessage(),
+                        Response::HTTP_INTERNAL_SERVER_ERROR
                     );
                 }
             } else {
