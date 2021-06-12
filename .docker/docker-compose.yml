@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+
+  gofingo-test-db:
+    container_name: gofingo-test-db
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=TestSymDB
+      - MYSQL_ROOT_PASSWORD=db_password
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "3395:3306"
+    volumes:
+      - ./database/data:/var/lib/mysql
+      - ./database/conf:/etc/mysql/conf.d
+
+  gofingo-test-apache:
+    container_name: gofingo-test-apache
+    build:
+      context: ./apache
+    restart: always
+    environment:
+      - SYMFONY_PROJECT_NAME=.
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+    volumes:
+      - ../:/var/www
+    ports:
+      - "8080:80"
+    expose:
+      - 8080
