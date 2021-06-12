@@ -54,7 +54,6 @@ class CategoryController extends AbstractJsonResponse
     {
         $payload = json_decode($request->getContent(), true);
         $form    = $this->createForm(CreateCategoryType::class);
-        $form->handleRequest($request);
         $form->submit($payload);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
