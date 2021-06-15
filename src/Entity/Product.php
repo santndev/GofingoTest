@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
@@ -22,7 +24,7 @@ class Product
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class)
@@ -40,7 +42,7 @@ class Product
      *      maxMessage = "Title cannot be longer than {{ limit }} characters"
      * )
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="float")
@@ -51,12 +53,12 @@ class Product
      *      notInRangeMessage = "Price must be between {{ min }} and {{ max }}",
      * )
      */
-    private $price;
+    private ?float $price;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $eid;
+    private ?int $eid;
 
     public function __construct()
     {
@@ -66,17 +68,6 @@ class Product
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int|null $id
-     *
-     * @return Product
-     */
-    public function setId(?int $id)
-    {
-        $this->id = $id;
-        return $this;
     }
 
     /**

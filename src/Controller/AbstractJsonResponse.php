@@ -1,12 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractJsonResponse extends AbstractController
 {
+    public const FORMAT_JSON = 'json';
+    public const RESULT_SUCCESS = 'success';
+
+    public const SUCCESS_STATUSES = [
+        Response::HTTP_OK,
+        Response::HTTP_CREATED,
+        Response::HTTP_ACCEPTED,
+        Response::HTTP_NON_AUTHORITATIVE_INFORMATION,
+        Response::HTTP_NO_CONTENT,
+        Response::HTTP_RESET_CONTENT,
+        Response::HTTP_PARTIAL_CONTENT
+    ];
 
     /**
      * @param array|string $data
@@ -16,20 +31,16 @@ abstract class AbstractJsonResponse extends AbstractController
      *
      * @return JsonResponse
      */
-    public function json($data, int $status = 200, array $headers = [], array $context = []): JsonResponse
+    protected function json($data, int $status = Response::HTTP_OK, array $headers = [], array $context = []): JsonResponse
     {
-        try {
-            $json = json_decode($data, true);
-            if ($json) {
-                $data = $json;
-            }
-        } catch (\Exception $e) {
+        if(is_string($data)) {
+            $data = @json_decode($data, true);
         }
-        if (in_array($status, [200, 201, 202, 203, 204, 205, 206])) {
+
+        if (in_array($status, self::SUCCESS_STATUSES)) {
             $response = [
                 'errorCode' => 0,
                 'data'      => $data['data'] ?? $data
-
             ];
         } else {
             $response = [
@@ -37,10 +48,12 @@ abstract class AbstractJsonResponse extends AbstractController
                 'error'     => $data
             ];
         }
+
         if (isset($data['meta'])) {
             $response['meta'] = $data['meta'];
             unset($data['meta']);
         }
+
         return parent::json(
             $response,
             $status,

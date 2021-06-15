@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
@@ -18,7 +20,7 @@ class Category
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=12)
@@ -30,27 +32,16 @@ class Category
      *      maxMessage = "Title cannot be longer than {{ limit }} characters"
      * )
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $eid;
+    private ?int $eid;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int|null $id
-     *
-     * @return Category
-     */
-    public function setId(?int $id)
-    {
-        $this->id = $id;
-        return $this;
     }
 
     public function getTitle(): ?string

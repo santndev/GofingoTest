@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Form\CreateCategoryType;
@@ -15,9 +17,6 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 class CategoryController extends AbstractJsonResponse
 {
-    /**
-     * @var CategoryService
-     */
     private CategoryService $categoryService;
 
     public function __construct(
@@ -34,12 +33,12 @@ class CategoryController extends AbstractJsonResponse
      */
     public function index(SerializerInterface $serializer): Response
     {
-        /** @var array $list */
         $list = $this->categoryService->getAll();
+
         return $this->json(
             $serializer->serialize(
                 $list,
-                'json'
+                $this::FORMAT_JSON
             )
         );
     }
@@ -52,7 +51,7 @@ class CategoryController extends AbstractJsonResponse
      */
     public function create(Request $request): Response
     {
-        $payload = json_decode($request->getContent(), true);
+        $payload = @json_decode($request->getContent(), true);
         $form    = $this->createForm(CreateCategoryType::class);
         $form->submit($payload);
         if ($form->isSubmitted()) {
@@ -69,12 +68,13 @@ class CategoryController extends AbstractJsonResponse
                 }
             } else {
                 $errors = FormErrorParser::arrayParse($form);
+
                 return $this->json($errors, Response::HTTP_BAD_REQUEST);
             }
         }
 
         return $this->json(
-            "success",
+            $this::RESULT_SUCCESS,
             Response::HTTP_CREATED
         );
     }

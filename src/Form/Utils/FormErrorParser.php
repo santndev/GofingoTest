@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Form\Utils;
 
 use Symfony\Component\Form\FormError;
@@ -7,12 +9,6 @@ use Symfony\Component\Form\FormInterface;
 
 class FormErrorParser
 {
-    /**
-     * @param FormInterface $form
-     *
-     * @return string[][]
-     * @psalm-return array<string, list<string>>
-     */
     public static function arrayParse(FormInterface $form): array
     {
         $formName = $form->getName();
@@ -29,12 +25,6 @@ class FormErrorParser
                 }
             }
             $fieldName = $name.$thisField;
-            /**
-             * One field can have multiple errors
-             */
-            if (!in_array($fieldName, $errors)) {
-                $errors[$fieldName] = [];
-            }
             $errors[$fieldName][] = $formError->getMessage();
         }
 

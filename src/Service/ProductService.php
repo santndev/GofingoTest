@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Entity\Product;
@@ -9,17 +11,10 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class ProductService
 {
-    /**
-     * @var ProductRepository
-     */
     private ProductRepository $productRepository;
-    /**
-     * @var CategoryRepository
-     */
+
     private CategoryRepository $categoryRepository;
-    /**
-     * @var EntityManagerInterface
-     */
+
     private EntityManagerInterface $entityManager;
 
     public function __construct(
@@ -37,11 +32,6 @@ class ProductService
         return $this->productRepository->findAll();
     }
 
-    /**
-     * @param int $productId
-     *
-     * @return Product|null
-     */
     public function getOne(int $productId): ?Product
     {
         return $this->productRepository->find($productId);

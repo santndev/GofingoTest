@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Entity\Category;
@@ -8,13 +10,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class CategoryService
 {
-    /**
-     * @var CategoryRepository
-     */
     private CategoryRepository $categoryRepository;
-    /**
-     * @var EntityManagerInterface
-     */
+
     private EntityManagerInterface $entityManager;
 
     public function __construct(
@@ -30,11 +27,6 @@ class CategoryService
         return $this->categoryRepository->findAll();
     }
 
-    /**
-     * @param int $categoryId
-     *
-     * @return Category|null
-     */
     public function getOne(int $categoryId): ?Category
     {
         return $this->categoryRepository->find($categoryId);

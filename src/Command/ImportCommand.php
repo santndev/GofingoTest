@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Command;
 
 use App\Form\CreateCategoryType;
@@ -20,28 +22,20 @@ class ImportCommand extends Command
     protected static $defaultName = 'app:import';
     protected static $defaultDescription = 'Import products.';
 
-    const ALLOW_KEYS = [
+    private const ALLOW_KEYS = [
         'eId',
         'title',
         'price',
         'categoriesEId'
     ];
-    /**
-     * @var CategoryService
-     */
-    private $categoryService;
-    /**
-     * @var ProductService
-     */
-    private $productService;
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-    /**
-     * @var JsonReader
-     */
-    private $reader;
+
+    private CategoryService $categoryService;
+
+    private ProductService $productService;
+
+    private FormFactoryInterface $formFactory;
+
+    private JsonReader $reader;
 
     public function __construct(
         CategoryService $categoryService,
@@ -115,7 +109,7 @@ class ImportCommand extends Command
         $errorMsg = [];
 
         do {
-            $total += 1;
+            $total++;
 
             $item = $this->reader->value();
             if (isset($item['eId'])) {
@@ -131,14 +125,14 @@ class ImportCommand extends Command
                     $category = $form->getData();
                     try {
                         $this->categoryService->createOne($category);
-                        $success += 1;
+                        $success++;
                     } catch (\Exception $exception) {
-                        $error      += 1;
+                        $error++;
                         $errorMsg[] = $exception->getMessage();
                         continue;
                     }
                 } else {
-                    $error      += 1;
+                    $error++;
                     $errors     = FormErrorParser::arrayParse($form);
                     $errorMsg[] = $errors;
                     continue;
@@ -167,8 +161,9 @@ class ImportCommand extends Command
         $success  = 0;
         $error    = 0;
         $errorMsg = [];
+
         do {
-            $total += 1;
+            $total++;
 
             $item = $this->reader->value();
             $form = $this->formFactory->createBuilder(ProductType::class)->getForm();
@@ -187,14 +182,14 @@ class ImportCommand extends Command
                     $category = $form->getData();
                     try {
                         $this->productService->createOne($category);
-                        $success += 1;
+                        $success++;
                     } catch (\Exception $exception) {
-                        $error      += 1;
+                        $error++;
                         $errorMsg[] = $exception->getMessage();
                         continue;
                     }
                 } else {
-                    $error       += 1;
+                    $error++;
                     $errors      = FormErrorParser::arrayParse($form);
                     $wrongFields = array_diff(array_keys($this->reader->value()), self::ALLOW_KEYS);
                     if (count($wrongFields) > 0 && isset($errors['product'])) {
