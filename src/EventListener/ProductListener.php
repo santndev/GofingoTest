@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventListener;
 
 use App\Entity\Product;
@@ -8,15 +10,9 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 class ProductListener
 {
-    /**
-     * @var string
-     */
     private string $receiveEmailAddress;
-    /**
-     * @var MessageBusInterface
-     */
-    private MessageBusInterface $bus;
 
+    private MessageBusInterface $bus;
 
     public function __construct(MessageBusInterface $bus, string $receiveEmailAddress)
     {
@@ -24,9 +20,6 @@ class ProductListener
         $this->receiveEmailAddress = $receiveEmailAddress;
     }
 
-    /**
-     * @param Product $product
-     */
     public function postPersist(Product $product): void
     {
         $this->bus->dispatch(new SendEmailMessage(
@@ -36,9 +29,6 @@ class ProductListener
         ));
     }
 
-    /**
-     * @param Product $product
-     */
     public function postUpdate(Product $product): void
     {
         $this->bus->dispatch(new SendEmailMessage(

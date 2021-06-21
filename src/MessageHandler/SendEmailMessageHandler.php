@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\MessageHandler;
 
 use App\Message\SendEmailMessage;
@@ -28,6 +30,7 @@ final class SendEmailMessageHandler implements MessageHandlerInterface
             );
         } catch (\Exception $e) {
             // TODO: store for maintain: $e
+            // need logging errors
             throw new \Exception("Email cannot be send");
         }
     }

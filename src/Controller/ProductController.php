@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Product;
@@ -16,13 +18,8 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 class ProductController extends AbstractJsonResponse
 {
-    /**
-     * @var ProductService
-     */
     private ProductService $productService;
-    /**
-     * @var SerializerInterface
-     */
+
     private SerializerInterface $serializer;
 
     public function __construct(
@@ -39,12 +36,12 @@ class ProductController extends AbstractJsonResponse
      */
     public function getAll(): Response
     {
-        /** @var array $list */
         $list = $this->productService->getAll();
+
         return $this->json(
             $this->serializer->serialize(
                 $list,
-                'json'
+                $this::FORMAT_JSON
             )
         );
     }
@@ -60,16 +57,13 @@ class ProductController extends AbstractJsonResponse
         /** @var Product|null $product */
         $product = $this->productService->getOne((int)$productId);
         if (!$product) {
-            return $this->json(
-                "Product not found",
-                Response::HTTP_OK
-            );
+            return $this->json("Product not found", Response::HTTP_BAD_REQUEST);
         }
 
         return $this->json(
             $this->serializer->serialize(
                 $product,
-                'json'
+                $this::FORMAT_JSON
             )
         );
     }
@@ -82,7 +76,7 @@ class ProductController extends AbstractJsonResponse
      */
     public function create(Request $request): Response
     {
-        $payload = json_decode($request->getContent(), true);
+        $payload = @json_decode($request->getContent(), true);
         $form    = $this->createForm(ProductType::class);
         $form->submit($payload);
         if ($form->isSubmitted()) {
@@ -99,12 +93,13 @@ class ProductController extends AbstractJsonResponse
                 }
             } else {
                 $errors = FormErrorParser::arrayParse($form);
+
                 return $this->json($errors, Response::HTTP_BAD_REQUEST);
             }
         }
 
         return $this->json(
-            "success",
+            $this::RESULT_SUCCESS,
             Response::HTTP_CREATED
         );
     }

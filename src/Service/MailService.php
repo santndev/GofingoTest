@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -9,10 +11,7 @@ use Symfony\Component\Mime\Email;
 
 class MailService
 {
-    /**
-     * @var MailerInterface
-     */
-    private $mailer;
+    private MailerInterface $mailer;
 
     public function __construct(MailerInterface $mailer)
     {
@@ -40,6 +39,7 @@ class MailService
         ?array $replyTo = null
     ): void {
         $email = (new Email())
+            // replace with DI for $_ENV['MAILER_SENDER'] and $_ENV['MAILER_SENDER_REALNAME']
             ->from(new Address($_ENV['MAILER_SENDER'], $_ENV['MAILER_SENDER_REALNAME']))
             ->to(...$to)
             ->priority(Email::PRIORITY_HIGH)
