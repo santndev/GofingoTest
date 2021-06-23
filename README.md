@@ -1,4 +1,4 @@
-# GofingoTest
+# Symfony 5.3 CURD product and import from csv file. Dockernizer, code convention, test...
 
 ## 1. Setup environment
 
@@ -8,7 +8,7 @@
 - docker-composer
 
 ### 3. Source clone
-git clone https://github.com/santndev/GofingoTest.git
+git clone https://github.com/santndev/Symfony-5.3-simple.git
 
 ### 4. Create environment
 cd [local source place]
@@ -17,9 +17,6 @@ Run commands:
 docker-compose -f .docker/docker-compose.yml build
 docker-compose -f .docker/docker-compose.yml up -d
 docker exec -it gofingo-test-apache //bin//bash
-composer install -n
-bin/console doctrine:migrations:diff --no-interaction
-bin/console doctrine:migrations:migrate --no-interaction
 ```
 
 ### 5. Run command
@@ -39,8 +36,3 @@ Messenger log:
 ```html
 var/log/email_consumer.out.log
 ```
-
-## Requirement risk:
-Should be clear before implementation: 
-1. categoriesEId in file products.json referent to category id or eid? It will make sense if it is eid, but in that case, eid should be not null.
-2. Which key accepted for categories? categoriesEId or categoryEId? 
